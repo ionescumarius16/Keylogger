@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Anul 3\\Sem I\\Proiectarea sistemelor de operare - Proiect\\Proiect\\test1\\test1\\test1.csproj",
+      "projectUniqueName": "D:\\Anul 3\\Sem I\\Proiectarea sistemelor de operare - Proiect\\Proiect\\Keylogger\\test1\\test1\\test1.csproj",
       "projectName": "test1",
-      "projectPath": "D:\\Anul 3\\Sem I\\Proiectarea sistemelor de operare - Proiect\\Proiect\\test1\\test1\\test1.csproj",
+      "projectPath": "D:\\Anul 3\\Sem I\\Proiectarea sistemelor de operare - Proiect\\Proiect\\Keylogger\\test1\\test1\\test1.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "D:\\Anul 3\\Sem I\\Proiectarea sistemelor de operare - Proiect\\Proiect\\test1\\test1\\obj\\",
+      "outputPath": "D:\\Anul 3\\Sem I\\Proiectarea sistemelor de operare - Proiect\\Proiect\\Keylogger\\test1\\test1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
