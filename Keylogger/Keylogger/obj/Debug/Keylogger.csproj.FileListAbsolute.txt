@@ -1,0 +1,15 @@
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\Keylogger.csproj.AssemblyReference.cache
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\MainWindow.g.cs
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\App.g.cs
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\Keylogger_MarkupCompile.cache
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\Keylogger_MarkupCompile.lref
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\Debug\Keylogger.exe.config
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\Debug\Keylogger.exe
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\Debug\Keylogger.pdb
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\MainWindow.baml
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\Keylogger.g.resources
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\Keylogger.Properties.Resources.resources
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\Keylogger.csproj.GenerateResource.cache
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\Keylogger.csproj.CoreCompileInputs.cache
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\Keylogger.exe
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\Debug\Keylogger.pdb

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Facultaturi\\Anul III\\Sem1\\1C - Proiectarea SO Proiect (GRUMAZESCU)\\Keylogger - Copy\\test1\\test1\\test1.csproj": {}
+    "D:\\Facultaturi\\Anul III\\Sem1\\1C - Proiectarea SO Proiect (GRUMAZESCU)\\Keylogger\\test1\\test1\\test1.csproj": {}
   },
   "projects": {
-    "D:\\Facultaturi\\Anul III\\Sem1\\1C - Proiectarea SO Proiect (GRUMAZESCU)\\Keylogger - Copy\\test1\\test1\\test1.csproj": {
+    "D:\\Facultaturi\\Anul III\\Sem1\\1C - Proiectarea SO Proiect (GRUMAZESCU)\\Keylogger\\test1\\test1\\test1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Facultaturi\\Anul III\\Sem1\\1C - Proiectarea SO Proiect (GRUMAZESCU)\\Keylogger - Copy\\test1\\test1\\test1.csproj",
+        "projectUniqueName": "D:\\Facultaturi\\Anul III\\Sem1\\1C - Proiectarea SO Proiect (GRUMAZESCU)\\Keylogger\\test1\\test1\\test1.csproj",
         "projectName": "test1",
-        "projectPath": "D:\\Facultaturi\\Anul III\\Sem1\\1C - Proiectarea SO Proiect (GRUMAZESCU)\\Keylogger - Copy\\test1\\test1\\test1.csproj",
+        "projectPath": "D:\\Facultaturi\\Anul III\\Sem1\\1C - Proiectarea SO Proiect (GRUMAZESCU)\\Keylogger\\test1\\test1\\test1.csproj",
         "packagesPath": "C:\\Users\\andre\\.nuget\\packages\\",
-        "outputPath": "D:\\Facultaturi\\Anul III\\Sem1\\1C - Proiectarea SO Proiect (GRUMAZESCU)\\Keylogger - Copy\\test1\\test1\\obj\\",
+        "outputPath": "D:\\Facultaturi\\Anul III\\Sem1\\1C - Proiectarea SO Proiect (GRUMAZESCU)\\Keylogger\\test1\\test1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\andre\\AppData\\Roaming\\NuGet\\NuGet.Config",

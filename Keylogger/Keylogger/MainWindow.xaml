@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Button x:Name="StartTracking" Content="Start Tracking" HorizontalAlignment="Left" Margin="445,266,0,0" VerticalAlignment="Top" Width="118" Height="41" Click="StartTracking_Click"/>
+        <TextBox x:Name="emailToSend" HorizontalAlignment="Left" Height="42" Margin="245,108,0,0" TextWrapping="Wrap" Text="email@gmail.com" VerticalAlignment="Top" Width="317" FontSize="22"/>
+        <TextBlock HorizontalAlignment="Left" Margin="125,107,0,0" TextWrapping="Wrap" Text="Email -&gt;" VerticalAlignment="Top" Height="37" Width="120" FontSize="22"/>
+
     </Grid>
 </Window>
