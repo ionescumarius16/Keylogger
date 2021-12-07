@@ -1,0 +1,15 @@
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\Keylogger.exe.config
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\Keylogger.exe
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\Keylogger.pdb
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\MainWindow.g.cs
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\App.g.cs
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger_MarkupCompile.cache
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger_MarkupCompile.lref
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\MainWindow.baml
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger.g.resources
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger.Properties.Resources.resources
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger.csproj.GenerateResource.cache
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger.csproj.CoreCompileInputs.cache
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger.exe
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger.pdb
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger.csproj.AssemblyReference.cache

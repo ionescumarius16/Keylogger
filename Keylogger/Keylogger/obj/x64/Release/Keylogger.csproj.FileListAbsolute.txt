@@ -1,0 +1,14 @@
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Release\Keylogger.exe.config
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Release\Keylogger.exe
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Release\Keylogger.pdb
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\MainWindow.g.cs
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\App.g.cs
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\Keylogger_MarkupCompile.cache
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\Keylogger_MarkupCompile.lref
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\MainWindow.baml
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\Keylogger.g.resources
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\Keylogger.Properties.Resources.resources
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\Keylogger.csproj.GenerateResource.cache
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\Keylogger.csproj.CoreCompileInputs.cache
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\Keylogger.exe
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Release\Keylogger.pdb
