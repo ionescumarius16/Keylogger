@@ -28,3 +28,19 @@ D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\copy\Keylogg
 D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\copy\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger.csproj.CoreCompileInputs.cache
 D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\copy\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger.exe
 D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\copy\Keylogger\Keylogger\Keylogger\obj\x64\Debug\Keylogger.pdb
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\EntityFramework.dll
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\EntityFramework.SqlServer.dll
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Buffers.dll
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Data.SQLite.dll
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Data.SQLite.EF6.dll
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Data.SQLite.Linq.dll
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Memory.dll
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Numerics.Vectors.dll
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\EntityFramework.xml
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\EntityFramework.SqlServer.xml
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Buffers.xml
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Data.SQLite.xml
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Memory.xml
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Numerics.Vectors.xml
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml

