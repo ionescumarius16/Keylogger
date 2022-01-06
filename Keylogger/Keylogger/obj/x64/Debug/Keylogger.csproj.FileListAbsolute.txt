@@ -44,3 +44,35 @@ D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\
 D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Memory.xml
 D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Numerics.Vectors.xml
 D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\Keylogger.exe.config
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\Keylogger.exe
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\Keylogger.pdb
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\EntityFramework.dll
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\EntityFramework.SqlServer.dll
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Buffers.dll
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Data.SQLite.dll
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Data.SQLite.EF6.dll
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Data.SQLite.Linq.dll
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Memory.dll
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Numerics.Vectors.dll
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\EntityFramework.xml
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\EntityFramework.SqlServer.xml
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Buffers.xml
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Data.SQLite.xml
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Memory.xml
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Numerics.Vectors.xml
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\bin\x64\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.csproj.AssemblyReference.cache
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\MainWindow.g.cs
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\App.g.cs
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger_MarkupCompile.cache
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger_MarkupCompile.lref
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\MainWindow.baml
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.g.resources
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.Properties.Resources.resources
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.csproj.GenerateResource.cache
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.csproj.CoreCompileInputs.cache
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.csproj.CopyComplete
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.exe
+D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.pdb
