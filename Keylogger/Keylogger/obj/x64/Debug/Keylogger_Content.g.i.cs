@@ -8,6 +8,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("auto.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("autooo.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("emaiiiiil.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("infoooo.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("start.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("time.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("title.png")]
 
 

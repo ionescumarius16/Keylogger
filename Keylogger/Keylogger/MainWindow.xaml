@@ -11,7 +11,7 @@
             AllowsTransparency="True">
     <Border CornerRadius="52" BorderThickness="1" MouseLeftButtonDown="Move" >
         <Border.Background>
-            <ImageBrush ImageSource="/matrix2.jpg" Opacity="0.9" Stretch="Fill"/>
+            <ImageBrush ImageSource="/fundal.jpg" Opacity="0.9" Stretch="Fill"/>
         </Border.Background>
 
         <Grid>
@@ -52,12 +52,11 @@
                 </Button.Background>
             </Button>
             <Image Margin="28,24,455,368" Source="/title.png" Opacity="0.95" />
-            <Image Margin="40,120,648,295" Source="emaiiiiil.png" Stretch="Fill" Opacity="0.95"/>
-            <Image Margin="40,170,418,245" Source="time.png" Stretch="Fill" Opacity="0.95"/>
-            <Image Margin="40,270,357,145" Source="INFOOOO.png" Stretch="Fill" Opacity="0.95"/>
-            <Image Margin="40,220,399,195" Source="autooo.png" Stretch="Fill"  Opacity="0.95"/>
-            <Image Margin="138,362,521,42" Source="START.png" Stretch="Fill" MouseLeftButtonDown="StartTrackingButton"/>
+            <Image Margin="40,120,648,295" Source="/emaiiiiil.png" Stretch="Fill" Opacity="0.95"/>
+            <Image Margin="40,170,418,245" Source="/time.png" Stretch="Fill" Opacity="0.95"/>
+            <Image Margin="40,270,357,145" Source="/INFOOOO.png" Stretch="Fill" Opacity="0.95"/>
+            <Image Margin="40,220,399,195" Source="/autooo.png" Stretch="Fill"  Opacity="0.95"/>
+            <Image Margin="138,362,521,42" Source="/START.png" Stretch="Fill" MouseLeftButtonDown="StartTrackingButton"/>
         </Grid>
     </Border>
-
 </Window>
