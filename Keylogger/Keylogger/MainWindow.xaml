@@ -5,55 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Keylogger"
         mc:Ignorable="d"
-        Title="Keylogger" Height="450" Width="800">
-    <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/matrix.jpg"/>
-        </Grid.Background>
-        <Button x:Name="StartTracking" Content="Start Tracking" HorizontalAlignment="Left" Margin="644,321,0,0" VerticalAlignment="Top" Width="118" Height="41" Click="StartTracking_Click" Background="#FF54488C">
-            <Button.OpacityMask>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FF9C6868" Offset="0.273"/>
-                    <GradientStop Color="#FF6C1C1C" Offset="1"/>
-                </RadialGradientBrush>
-            </Button.OpacityMask>
-        </Button>
-        <TextBox x:Name="emailToSend" HorizontalAlignment="Left" Height="37" Margin="135,92,0,0" TextWrapping="Wrap" Text="ionescumarius1600@gmail.com" VerticalAlignment="Top" Width="378" FontSize="22"/>
-        <TextBlock HorizontalAlignment="Left" Margin="10,92,0,0" TextWrapping="Wrap" Text="Email:" VerticalAlignment="Top" Height="37" Width="91" FontSize="22" Foreground="White" FontWeight="Bold" FontStyle="Italic"/>
-        <Button x:Name="emailInfo" Content="?" HorizontalAlignment="Left" Margin="548,98,0,0" VerticalAlignment="Top" Width="32" Height="27" Click="emailInfo_Click" Foreground="White" BorderBrush="#00707070">
-            <Button.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FF3D3D3D" Offset="0.253"/>
-                    <GradientStop Offset="1"/>
-                </RadialGradientBrush>
-            </Button.Background>
-        </Button>
-        <TextBox x:Name="timeBetweenEmails" HorizontalAlignment="Left" Height="32" Margin="291,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="22"/>
-        <TextBlock HorizontalAlignment="Left" Margin="7,147,0,0" TextWrapping="Wrap" Text="Time between emails:" VerticalAlignment="Top" Height="32" Width="224" FontSize="22" Foreground="White" FontWeight="Bold" FontStyle="Italic"/>
-        <Button x:Name="timeInfo" Content="?" HorizontalAlignment="Left" Margin="412,152,0,0" VerticalAlignment="Top" Width="32" Height="27" Click="timeInfo_Click"  Foreground="White" BorderBrush="#00707070">
-            <Button.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FF3D3D3D" Offset="0.253"/>
-                    <GradientStop Offset="1"/>
-                </RadialGradientBrush>
-            </Button.Background>
-        </Button>
-        <CheckBox x:Name="IpAdd" Content="Ip addresses" HorizontalAlignment="Left" Margin="26,332,0,0" VerticalAlignment="Top" Height="15" Width="101" IsChecked="True" Foreground="White"/>
-        <TextBlock HorizontalAlignment="Left" Margin="8,274,0,0" TextWrapping="Wrap" Text="Informations  to be sent:" VerticalAlignment="Top" Height="32" Width="278" FontSize="22" Foreground="White" FontWeight="Bold" FontStyle="Italic"/>
-        <CheckBox x:Name="Apps" Content="Opened apps" HorizontalAlignment="Left" Margin="132,332,0,0" VerticalAlignment="Top" IsChecked="True" Foreground="White"/>
-        <CheckBox x:Name="Keys" Content="Keys pressed" HorizontalAlignment="Left" Margin="244,332,0,0" VerticalAlignment="Top" IsChecked="True" Foreground="White"/>
-        <CheckBox x:Name="Copied" Content="Copied text" HorizontalAlignment="Left" Margin="382,332,0,0" VerticalAlignment="Top" IsChecked="True" Foreground="White"/>
-        <CheckBox x:Name="History" Content="Web history" HorizontalAlignment="Left" Margin="498,332,0,0" VerticalAlignment="Top" IsChecked="True" Foreground="White" />
-        <TextBlock HorizontalAlignment="Left" Margin="324,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="37" Width="120" FontSize="22" TextAlignment="Center"><Run FontWeight="Bold" Text="Setup"/></TextBlock>
-        <TextBox x:Name="timeToAutodestruction" HorizontalAlignment="Left" Height="32" Margin="291,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="22"/>
-        <TextBlock HorizontalAlignment="Left" Margin="7,210,0,0" TextWrapping="Wrap" Text="Time to autodestruction:" VerticalAlignment="Top" Height="32" Width="279" FontSize="22" Foreground="White" FontWeight="Bold" FontStyle="Italic"/>
-        <Button x:Name="timeAutodestruction" Content="?" HorizontalAlignment="Left" Margin="412,215,0,0" VerticalAlignment="Top" Width="32" Height="27" Click="timeAutodestruction_Click" Foreground="White" BorderBrush="#00707070" >
-            <Button.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FF3D3D3D" Offset="0.253"/>
-                    <GradientStop Offset="1"/>
-                </RadialGradientBrush>
-            </Button.Background>
-        </Button>
-    </Grid>
+        Title="Keylogger" Height="450" Width="800" ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+            Background="Transparent"
+            WindowStyle="None"
+            AllowsTransparency="True">
+    <Border CornerRadius="52" BorderThickness="1" MouseLeftButtonDown="Move" >
+        <Border.Background>
+            <ImageBrush ImageSource="/matrix2.jpg" Opacity="0.9" Stretch="Fill"/>
+        </Border.Background>
+
+        <Grid>
+            <Ellipse Fill="Red" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,8,31,0" MouseLeftButtonDown="CloseApp" ToolTip="Exit"></Ellipse>
+            <Ellipse Fill="Yellow" Height="20" Width="20" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,30,10,0" MouseLeftButtonDown="Minimize" ToolTip="Minimize"></Ellipse>
+            <TextBox x:Name="emailToSend" HorizontalAlignment="Left" Height="37" Margin="178,115,0,0" TextWrapping="Wrap" Text="ionescumarius1600@gmail.com" VerticalAlignment="Top" Width="378" FontSize="22"/>
+            <Button x:Name="emailInfo" Content="?" HorizontalAlignment="Left" Margin="1,124,0,0" VerticalAlignment="Top" Width="32" Height="27" Click="emailInfo_Click" Foreground="White" BorderBrush="#00707070">
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF3D3D3D" Offset="0.253"/>
+                        <GradientStop Offset="1"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
+            <TextBox x:Name="timeBetweenEmails" HorizontalAlignment="Left" Height="32" Margin="419,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="22"/>
+            <Button x:Name="timeInfo" Content="?" HorizontalAlignment="Left" Margin="1,174,0,0" VerticalAlignment="Top" Width="32" Height="27" Click="timeInfo_Click"  Foreground="White" BorderBrush="#00707070">
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF3D3D3D" Offset="0.253"/>
+                        <GradientStop Offset="1"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
+            <Border Background="Black" Opacity="0.6" Margin="29,312,271,107" CornerRadius="17"  ></Border>
+            <CheckBox x:Name="IpAdd" Content="Ip addresses" HorizontalAlignment="Left" Margin="136,319,0,0" VerticalAlignment="Top" Height="15" Width="101" IsChecked="True" Foreground="White"/>
+            <CheckBox x:Name="Apps" Content="Opened apps" HorizontalAlignment="Left" Margin="230,319,0,0" VerticalAlignment="Top" IsChecked="True" Foreground="White"/>
+            <CheckBox x:Name="Keys" Content="Keys pressed" HorizontalAlignment="Left" Margin="334,320,0,0" VerticalAlignment="Top" IsChecked="True" Foreground="White"/>
+            <CheckBox x:Name="Copied" Content="Copied images" HorizontalAlignment="Left" Margin="434,319,0,0" VerticalAlignment="Top" IsChecked="True" Foreground="White" />
+            <CheckBox x:Name="History" Content="Web history" HorizontalAlignment="Left" Margin="39,319,0,0" VerticalAlignment="Top" IsChecked="True" Foreground="White" />
+
+            <TextBox x:Name="timeToAutodestruction" HorizontalAlignment="Left" Height="32" Margin="425,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="57" FontSize="22"/>
+            <Button x:Name="timeAutodestruction" Content="?" HorizontalAlignment="Left" Margin="1,224,0,0" VerticalAlignment="Top" Width="32" Height="27" Click="timeAutodestruction_Click" Foreground="White" BorderBrush="#00707070" >
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF3D3D3D" Offset="0.253"/>
+                        <GradientStop Offset="1"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
+            <Image Margin="28,24,455,368" Source="/title.png" Opacity="0.95" />
+            <Image Margin="40,120,648,295" Source="emaiiiiil.png" Stretch="Fill" Opacity="0.95"/>
+            <Image Margin="40,170,418,245" Source="time.png" Stretch="Fill" Opacity="0.95"/>
+            <Image Margin="40,270,357,145" Source="INFOOOO.png" Stretch="Fill" Opacity="0.95"/>
+            <Image Margin="40,220,399,195" Source="autooo.png" Stretch="Fill"  Opacity="0.95"/>
+            <Image Margin="138,362,521,42" Source="START.png" Stretch="Fill" MouseLeftButtonDown="StartTrackingButton"/>
+        </Grid>
+    </Border>
+
 </Window>

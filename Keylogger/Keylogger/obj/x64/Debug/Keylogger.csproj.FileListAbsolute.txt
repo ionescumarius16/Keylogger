@@ -76,3 +76,4 @@ D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylog
 D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.csproj.CopyComplete
 D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.exe
 D:\Anul 3\Sem I\Proiectarea sistemelor de operare - Proiect\Proiect\Copie\Keylogger\Keylogger\obj\x64\Debug\Keylogger.pdb
+D:\Facultaturi\Anul III\Sem1\1C - Proiectarea SO Proiect (GRUMAZESCU)\Keylogger\Keylogger\Keylogger\obj\x64\Debug\App.baml

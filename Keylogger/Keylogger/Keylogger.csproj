@@ -159,6 +159,54 @@
   <ItemGroup>
     <Resource Include="icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="matrix2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="email.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="timeBetween.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="emails.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="timeTo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="autodestruction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="informations.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="toBeSent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="time1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="time.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="auto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="autooo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="emaiiiiil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="INFOOOO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="START.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

